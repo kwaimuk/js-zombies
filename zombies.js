@@ -7,13 +7,13 @@
  * @param {string} name     The item's name.
  * @property {string} name
  */
-class Item {
+ class Item {
   constructor (name){
     this._name = name;
   }
-    get name(){
-      return this._name;
-    }
+  get name(){
+    return this._name;
+  }
 }
 
 /**
@@ -31,14 +31,14 @@ class Item {
  * @param {number} damage   The weapon's damage.
  * @property {number} damage
  */
-class Weapon extends Item {
+ class Weapon extends Item {
   constructor (name, damage){
     super(name);
     this._damage = damage;
   }
-    get damage(){
-      return this._damage;
-    }
+  get damage(){
+    return this._damage;
+  }
 
 }
 
@@ -64,14 +64,14 @@ class Weapon extends Item {
  * @param {number} energy     The energy the food provides.
  * @property {number} energy
  */
-class Food extends Item {
+ class Food extends Item {
   constructor (name, energy){
     super(name);
     this._energy = energy;
   }
-    get energy(){
-      return this._energy;
-    }
+  get energy(){
+    return this._energy;
+  }
 }
 
 
@@ -103,15 +103,66 @@ class Food extends Item {
  * @property {method} getPack              Returns private variable `pack`.
  * @property {method} getMaxHealth         Returns private variable `maxHealth`.
  */
-class Player {
+ class Player {
   constructor (name, health, strength, speed){
-    this.pack = pack;
-    this.maxHealth = maxHealth;
-    this.name = name;
-    this.health = health;
-    this.strength = strength;
-    this. speed
+    this._pack = [];
+    this._maxHealth = health;
+    this._name = name;
+    this._health = health;
+    this._strength = strength;
+    this._speed = speed;
+    this.isAlive = true;
+
   }
+  get name(){
+    return this._name;
+  }
+
+  get health(){
+    return this._health;
+  }
+
+  get strength(){
+    return this._strength;
+  }
+
+  get speed(){
+    return this._speed;
+  }
+
+  get equipped(){
+    return !Weapon;
+  }
+
+  getPack(){
+    const pack = this._pack;
+    return pack;
+  };
+
+  getMaxHealth(){
+      return this._maxHealth;
+  }
+
+  takeItem(item){
+
+    // this._pack.push(item);
+    // console.log(this._pack.length)
+
+    if(this._pack.length>=3){
+      console.log("pack is full");
+
+      return false;
+    }else{
+      this._pack.push(item);
+      return true;
+    }
+  }
+
+    discardItem(item){
+      if(this._pack.indexOf(item) === -1){
+        return true;
+      }
+    }
 
 }
 
@@ -358,7 +409,7 @@ class Player {
  * Sample run.
  * Feel free to edit this and check your game logic.
  */
-function runGame() {
+ function runGame() {
   var player = new Player("Joan", 500, 30, 70);
   // var zombie = new Zombie(40, 50, 20);
   // var charger = new FastZombie(175, 25, 60);
