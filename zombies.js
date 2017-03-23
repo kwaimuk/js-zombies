@@ -7,7 +7,14 @@
  * @param {string} name     The item's name.
  * @property {string} name
  */
-
+class Item {
+  constructor (name){
+    this._name = name;
+  }
+    get name(){
+      return this._name;
+    }
+}
 
 /**
  * Class => Weapon(name, damage)
@@ -24,7 +31,16 @@
  * @param {number} damage   The weapon's damage.
  * @property {number} damage
  */
+class Weapon extends Item {
+  constructor (name, damage){
+    super(name);
+    this._damage = damage;
+  }
+    get damage(){
+      return this._damage;
+    }
 
+}
 
 /**
  * Weapon Extends Item Class
@@ -48,6 +64,15 @@
  * @param {number} energy     The energy the food provides.
  * @property {number} energy
  */
+class Food extends Item {
+  constructor (name, energy){
+    super(name);
+    this._energy = energy;
+  }
+    get energy(){
+      return this._energy;
+    }
+}
 
 
 /**
@@ -78,7 +103,17 @@
  * @property {method} getPack              Returns private variable `pack`.
  * @property {method} getMaxHealth         Returns private variable `maxHealth`.
  */
+class Player {
+  constructor (name, health, strength, speed){
+    this.pack = pack;
+    this.maxHealth = maxHealth;
+    this.name = name;
+    this.health = health;
+    this.strength = strength;
+    this. speed
+  }
 
+}
 
 /**
  * Player Class Method => checkPack()
@@ -324,7 +359,7 @@
  * Feel free to edit this and check your game logic.
  */
 function runGame() {
-  // var player = new Player("Joan", 500, 30, 70);
+  var player = new Player("Joan", 500, 30, 70);
   // var zombie = new Zombie(40, 50, 20);
   // var charger = new FastZombie(175, 25, 60);
   // var tank = new StrongZombie(250, 100, 15);
